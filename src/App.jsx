@@ -34,9 +34,11 @@ export default function App() {
 
 return (
   <>
-    <div className='entradas'>
-      <ContactForm addContact={addContact} editContact={editMode ? currentContact : null} />
-      <ContactList contacts={contacts} deleteContact={deleteContact} editContact={editContact} />
+    <div className='fundo-overlay'>
+      <div className='entradas'>
+        <ContactForm addContact={addContact} editContact={editMode ? currentContact : null} />
+        <ContactList contacts={contacts} deleteContact={deleteContact} editContact={editContact} />
+      </div>
     </div>
   </>
 );
