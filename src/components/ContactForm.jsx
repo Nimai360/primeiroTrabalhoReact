@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 function ContactForm({ addContact, editContact }) {
   
@@ -35,12 +36,17 @@ function ContactForm({ addContact, editContact }) {
     <form onSubmit={handleSubmit}>
       <input name="name" value={contact.name} onChange={handleChange} placeholder="Nome" required />
       <input name="phone" value={contact.phone} onChange={handleChange} placeholder="Telefone" required />
-      <input type="checkbox" name="hasWhatsapp" checked={contact.hasWhatsapp} onChange={handleChange} />
+      <div className='whats'>
+        <p>Tem Whatsapp? </p>
+        <input type="checkbox" name="hasWhatsapp" checked={contact.hasWhatsapp} onChange={handleChange} />
+      </div>
       <textarea name="notes" value={contact.notes} onChange={handleChange} placeholder="Observações" />
-      <button type="submit">Salvar</button>
-      <button type="reset" onClick={() => setContact({ name: '', phone: '', hasWhatsapp: false, notes: '' })}>
-        Limpar
-      </button>
+      <div className='buttons-forms'>
+        <button type="reset" onClick={() => setContact({ name: '', phone: '', hasWhatsapp: false, notes: '' })}>
+          Limpar
+        </button>
+        <button type="submit">Salvar</button>
+      </div>
     </form>
   );
 }
