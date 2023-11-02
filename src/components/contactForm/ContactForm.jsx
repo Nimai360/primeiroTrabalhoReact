@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-function ContactForm({ addContact, editContact }) {
+function ContactForm({ addNewContactDB, editContact }) {
+  // console.log(currentContact);
   
-  const [contact, setContact] = useState(editContact || { name: '', phone: '', hasWhatsapp: false, notes: '' });
+  const [contact, setContact] = useState(editContact || { name: '', phone: '', hasWhatsapp: false, notes: '', editMode: false});
   
   useEffect(() => {
     if (editContact) {
@@ -11,26 +12,27 @@ function ContactForm({ addContact, editContact }) {
     }
   }, [editContact]);
 
-  // const handleChange = (e) => {
-  //   setContact({ ...contact, [e.target.name]: e.target.value });
-  // };
-
   const handleChange = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setContact({ ...contact, [e.target.name]: value });
   };
   
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   addNewContactDB(contact);
+  //   // addContact(contact);
+  //   setContact({ name: '', phone: '', hasWhatsapp: false, notes: '' });
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    addContact(contact);
-    setContact({ name: '', phone: '', hasWhatsapp: false, notes: '' });
-  };
-
-  // useEffect(() => {
-  //   console.log(contact);
-  // }, [contact]);
-  
+    addNewContactDB(contact);
+    setContact({ name: '', phone: '', hasWhatsapp: false, notes: '', editMode: false });
+    setEditMode(false);
+    setCurrentContact(null);
+   };
+   
 
   return (
     <form onSubmit={handleSubmit}>
@@ -42,7 +44,7 @@ function ContactForm({ addContact, editContact }) {
       </div>
       <textarea name="notes" value={contact.notes} onChange={handleChange} placeholder="Observações" />
       <div className='buttons-forms'>
-        <button type="reset" onClick={() => setContact({ name: '', phone: '', hasWhatsapp: false, notes: '' })}>
+        <button type="reset" onClick={() => setContact({ name: '', phone: '', hasWhatsapp: false, notes: '', editMode: false })}>
           Limpar
         </button>
         <button type="submit">Salvar</button>

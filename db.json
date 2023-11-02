@@ -1,0 +1,28 @@
+{
+  "contacts": [
+    {
+      "name": "222",
+      "phone": "222",
+      "hasWhatsapp": false,
+      "notes": "22",
+      "editMode": false,
+      "id": 2
+    },
+    {
+      "name": "333",
+      "phone": "333",
+      "hasWhatsapp": false,
+      "notes": "3333",
+      "editMode": false,
+      "id": 3
+    },
+    {
+      "name": "11",
+      "phone": "111",
+      "hasWhatsapp": false,
+      "notes": "11111",
+      "editMode": true,
+      "id": 1
+    }
+  ]
+}
